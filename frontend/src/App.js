@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   const triggerChaos = () => {
-    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:80';
+    const BACKEND_URL = "https://autohealops.onrender.com";
     
     fetch(`${backendUrl}/api/chaos`, { method: 'POST' })
       .then(res => res.json())
