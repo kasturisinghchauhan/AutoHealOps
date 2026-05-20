@@ -2,16 +2,19 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-  margin: 0;
-  background-color: #0B0F19;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    margin: 0;
+    background-color: #0B0F19;
+    color: #E2E8F0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-/* Custom crisp dark scrollbar mapping for terminal logs */
+/* Custom dark scrollbar for the central telemetry event logger */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -20,7 +23,7 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: #1E293B;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
