@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [metrics, setMetrics] = useState({ cpu: 0, memory: 0, status: "Healthy" });
 
+  // Define your live backend URL once at the top of your component
+  const BACKEND_URL = "https://autohealops-backend.onrender.com";
+
   useEffect(() => {
     const fetchData = () => {
-      // Use the environment variable fallback smoothly
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:80';
-      
-      fetch(`${backendUrl}/api/metrics`)
+      // Fetches live data from https://autohealops-backend.onrender.com/api/metrics
+      fetch(`${BACKEND_URL}/api/metrics`)
         .then(res => {
           if (!res.ok) throw new Error("Network response was not ok");
           return res.json();
@@ -23,12 +24,11 @@ function App() {
   }, []);
 
   const triggerChaos = () => {
-    const BACKEND_URL = "https://autohealops.onrender.com";
-    
-    fetch(`${backendUrl}/api/chaos`, { method: 'POST' })
+    // Triggers chaos simulation via POST to your live backend endpoint
+    fetch(`${BACKEND_URL}/api/chaos`, { method: 'POST' })
       .then(res => res.json())
       .then(data => alert(data.message))
-      .catch(err => console.log(err));
+      .catch(err => console.log("Chaos injection error: ", err));
   };
 
   return (
